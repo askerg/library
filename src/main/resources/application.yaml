@@ -1,0 +1,18 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: library
+  datasource:
+    url: jdbc:postgresql://localhost:5432/lib_api
+    username: lib_api
+    password: lib_api
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+springdoc:
+  swagger-ui:
+    path: /swagger-ui
+    disable-swagger-default-url: true
+    defaultModelRendering: model

@@ -1,0 +1,7 @@
+POST http://localhost:8081/api/users/assign
+Content-Type: application/json
+
+{
+    "userId": 1,
+    "isbn": "0000000000001"
+}

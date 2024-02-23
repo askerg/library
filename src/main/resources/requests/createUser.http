@@ -1,0 +1,9 @@
+POST http://localhost:8081/api/users
+Content-Type: application/json
+
+{
+  "firstName": "f1",
+  "lastName": "l1",
+  "middleName": "m1",
+  "birthDate": "2024-01-22"
+}
