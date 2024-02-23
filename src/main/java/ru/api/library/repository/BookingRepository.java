@@ -8,6 +8,6 @@ import ru.api.library.model.User;
 import java.util.List;
 
 @Repository
-public interface ReadingRepository extends JpaRepository<Booking, Integer> {
+public interface BookingRepository extends JpaRepository<Booking, Integer> {
 	List<Booking> findByUser(User user);
 }

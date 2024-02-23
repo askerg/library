@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class UserService {
 	private final UserRepository repository;
-	private final ReadingService readingService;
+	private final BookingService bookingService;
 
 	@Transactional(readOnly = true)
 	public <T> List<T> getAll(Function<User, T> mapper) {
@@ -73,13 +73,13 @@ public class UserService {
 		User user = repository.findById(userId)
 			.orElseThrow(ApiError.UserNotFound::new);
 
-		readingService.create(user, isbn, new Date());
+		bookingService.create(user, isbn, new Date());
 
 		return getById(userId);
 	}
 
 	private void getAssignedBooks(User user) {
-		List<Booking> books = readingService.getAllByUserId(user);
+		List<Booking> books = bookingService.getAllByUserId(user);
 		user.setBooks(books);
 	}
 }

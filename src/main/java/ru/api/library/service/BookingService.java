@@ -6,15 +6,15 @@ import org.springframework.transaction.annotation.Transactional;
 import ru.api.library.model.Book;
 import ru.api.library.model.Booking;
 import ru.api.library.model.User;
-import ru.api.library.repository.ReadingRepository;
+import ru.api.library.repository.BookingRepository;
 
 import java.util.Date;
 import java.util.List;
 
 @Service
 @AllArgsConstructor
-public class ReadingService {
-	private final ReadingRepository repository;
+public class BookingService {
+	private final BookingRepository repository;
 	private final BookService bookService;
 
 	@Transactional(readOnly = true)
@@ -23,7 +23,7 @@ public class ReadingService {
 	}
 
 	@Transactional
-	public Booking create(User user, String isbn, Date creationDate) {
+	public void create(User user, String isbn, Date creationDate) {
 		Booking booking = new Booking();
 
 		Book book = bookService.getByIsbn(isbn);
@@ -32,6 +32,6 @@ public class ReadingService {
 		booking.setUser(user);
 		booking.setCreatedAt(creationDate);
 
-		return repository.save(booking);
+		repository.save(booking);
 	}
 }
